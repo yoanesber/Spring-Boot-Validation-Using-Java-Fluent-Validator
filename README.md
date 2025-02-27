@@ -251,7 +251,7 @@ The REST API provides a set of endpoints to manage Netflix shows, allowing clien
 }
 ```
 
-and response:
+Response:
 ```json
 {
     "statusCode": 201,
@@ -274,7 +274,7 @@ and response:
 }
 ```
 
-When sending an invalid JSON body, the API will return a 400 Bad Request response with validation error details:
+When sending an **invalid JSON body**, the API will return a `400 Bad Request` response with validation error details.
 Request:
 ```json
 {
