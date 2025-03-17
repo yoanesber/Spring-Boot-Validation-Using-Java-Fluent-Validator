@@ -5,8 +5,8 @@ This project uses java-fluent-validator to validate API request payloads dynamic
 This project is a Spring Boot REST API designed to manage **Netflix Shows**. It utilizes `Spring Boot 3.4.2`, `Spring Data JPA with Hibernate`, and `PostgreSQL` to perform CRUD operations on Netflix Shows.
 One of the key aspects of this project is the use of `Java Fluent Validator` to enforce input validation rules **dynamically**. Instead of relying on standard `Java Bean Validation` (annotations like `@NotNull`), this approach allows greater `flexibility`, `readability`, and `maintainability` in defining complex validation rules programmatically. By using Fluent Validator, we can ensure that incoming request bodies adhere to the **expected structure and business rules** before persisting data into the database.
 
-### Why Fluent Validator ?
-#### Programmatic & Flexible
+## 📌 Why Fluent Validator ?
+### Programmatic & Flexible
 Unlike annotations (`@NotNull`, `@Size`, etc.), validation rules can be dynamically modified at runtime. It means that validation rules are not fixed at compile-time but **can be adjusted based on conditions** at runtime. This allows the application to apply different validation rules dynamically depending on user input, API parameters, business logic, or external configurations.
 
 Example scenario:
@@ -37,7 +37,7 @@ public class NetflixShowValidator extends AbstractValidator<NetflixShowDto> {
 ```
 
 
-#### Better Readability
+### Better Readability
 Validation logic is structured in a clear and fluent manner. The validation reads naturally like a sentence. Reads like plain English, unlike traditional `if-else` or annotation-based (`@NotNull`, `@Size`, etc.) validation.
 
 ❌ Without Fluent Validator
@@ -61,16 +61,16 @@ ruleFor(NetflixShowDto::getReleaseYear)
 
 ```
 
-#### Maintainability
+### Maintainability
 Centralizes validation logic, making updates easy. If you need to change a rule, you update it in one place instead of modifying multiple files.
 
-#### Reusable Rules
+### Reusable Rules
 Common validation logic can be reused across multiple request DTOs.
 
-#### Extensible
+### Extensible
 Can add custom rules without modifying the existing validation structure.
 
-#### Improved Error Handling
+### Improved Error Handling
 Custom validation messages and logic can be tailored to specific business needs.
 
 ---
@@ -88,13 +88,18 @@ The technology used in this project are:
 
 ## 📋 Project Structure
 The project follows a layered architecture with the following structure:
-- `config` : Contains configurations for the application
-- `controller` : Exposes REST API endpoints for handling requests and responses
-- `dto` : Data Transfer Objects (DTOs) for request/response payloads
-- `entity` : Entity classes representing database tables
-- `repository` : JPA repositories for database access
-- `service` : Business logic layer, separating service interfaces and their implementations
-- `validator` : Contains custom validation logic using Fluent Validator to enforce constraints on API request payloads
+```bash
+api-with-fluent-validator/
+│── src/main/java/com/yoanesber/spring/rest/api_with_fluent_validator/
+│   ├── config/                # Contains configurations for the application
+│   ├── controller/            # Exposes REST API endpoints for handling requests and responses
+│   ├── dto/                   # Data Transfer Objects (DTOs) for request/response payloads
+│   ├── entity/                # Entity classes representing database tables
+│   ├── repository/            # JPA repositories for database access
+│   ├── service/               # Business logic layer
+│   │   ├── impl/              # Implementation of services
+│   ├── validator/             # Contains custom validation logic using Fluent Validator to enforce constraints on API request payloads
+``` 
 ---
 
 ## 📂 Environment Configuration
@@ -161,13 +166,19 @@ CREATE TABLE netflix.netflix_shows (
 ## 🛠 Installation & Setup
 A step by step series of examples that tell you how to get a development env running.
 1. Clone the repository
-- git clone https://github.com/yoanesber/Spring-Boot-Validation-Using-Java-Fluent-Validator.git
+```bash
+git clone https://github.com/yoanesber/Spring-Boot-Validation-Using-Java-Fluent-Validator.git
+```
+
 2. Set up PostgreSQL
 - Run DDL PostgreSQL to create Database Schema
 - Configure the PostgreSQL database connection in application.properties
+
 3. Run the application locally
 - Make sure PostgreSQL is running, then execute: 
-`mvn spring-boot:run `
+```bash
+mvn spring-boot:run
+```
 - The API will be available at http://localhost:8081/ 
 ---
 
@@ -356,6 +367,7 @@ and response:
     }
 }
 ```
+
 - `DELETE` http://localhost:8081/api/v1/netflix-shows/1 - Delete a Netflix Show with response:
 ```json
 {
