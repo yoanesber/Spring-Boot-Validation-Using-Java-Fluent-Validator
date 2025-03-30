@@ -10,9 +10,9 @@ One of the key aspects of this project is the use of **Java Fluent Validator** t
 1. Programmatic & Flexible
 Unlike annotations (`@NotNull`, `@Size`, etc.), validation rules can be dynamically modified at runtime. It means that validation rules are not fixed at compile-time but **can be adjusted based on conditions** at runtime. This allows the application to apply different validation rules dynamically depending on user input, API parameters, business logic, or external configurations.  
 
-Example scenario:  
-- If type = "MOVIE", then durationInMinute must be greater than 0.
-- If type = "TV_SHOW", then durationInMinute should not be validated but seasons must be greater than 0.
+    Example scenario:  
+    - If `type = "MOVIE"`, then durationInMinute must be greater than 0.
+    - If `type = "TV_SHOW"`, then durationInMinute should not be validated but seasons must be greater than 0.
 
 ```java
 public class NetflixShowValidator extends AbstractValidator<NetflixShowDto> {
