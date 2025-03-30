@@ -1,15 +1,16 @@
-# ⚡Validation Using Java Fluent Validator
-This project uses java-fluent-validator to validate API request payloads dynamically, ensuring that data meets business constraints before it is processed or stored in the database.
+# Validation Using Java Fluent Validator
+This project uses **Java Fluent Validator** to validate API request payloads dynamically, ensuring that data meets business constraints before it is processed or stored in the database.
 
-## 🚀 Overview
-This project is a Spring Boot REST API designed to manage **Netflix Shows**. It utilizes `Spring Boot 3.4.2`, `Spring Data JPA with Hibernate`, and `PostgreSQL` to perform CRUD operations on Netflix Shows.
-One of the key aspects of this project is the use of `Java Fluent Validator` to enforce input validation rules **dynamically**. Instead of relying on standard `Java Bean Validation` (annotations like `@NotNull`), this approach allows greater `flexibility`, `readability`, and `maintainability` in defining complex validation rules programmatically. By using Fluent Validator, we can ensure that incoming request bodies adhere to the **expected structure and business rules** before persisting data into the database.
+## 📖 Overview
+This project is a Spring Boot REST API designed to manage **Netflix Shows**. It utilizes **Spring Boot**, **Spring Data JPA with Hibernate**, and **PostgreSQL** to perform CRUD operations on Netflix Shows.  
 
-## 📌 Why Fluent Validator ?
-### Programmatic & Flexible
-Unlike annotations (`@NotNull`, `@Size`, etc.), validation rules can be dynamically modified at runtime. It means that validation rules are not fixed at compile-time but **can be adjusted based on conditions** at runtime. This allows the application to apply different validation rules dynamically depending on user input, API parameters, business logic, or external configurations.
+One of the key aspects of this project is the use of **Java Fluent Validator** to enforce input validation rules **dynamically**. Instead of relying on standard **Java Bean Validation** (annotations like `@NotNull`), this approach allows greater **flexibility, readability, and maintainability** in defining complex validation rules programmatically. By using Fluent Validator, we can ensure that incoming request bodies adhere to the **expected structure and business rules** before persisting data into the database.  
 
-Example scenario:
+## 🔍 Why Fluent Validator ?
+1. Programmatic & Flexible
+Unlike annotations (`@NotNull`, `@Size`, etc.), validation rules can be dynamically modified at runtime. It means that validation rules are not fixed at compile-time but **can be adjusted based on conditions** at runtime. This allows the application to apply different validation rules dynamically depending on user input, API parameters, business logic, or external configurations.  
+
+Example scenario:  
 - If type = "MOVIE", then durationInMinute must be greater than 0.
 - If type = "TV_SHOW", then durationInMinute should not be validated but seasons must be greater than 0.
 
@@ -36,9 +37,8 @@ public class NetflixShowValidator extends AbstractValidator<NetflixShowDto> {
 }
 ```
 
-
-### Better Readability
-Validation logic is structured in a clear and fluent manner. The validation reads naturally like a sentence. Reads like plain English, unlike traditional `if-else` or annotation-based (`@NotNull`, `@Size`, etc.) validation.
+2. Better Readability
+Validation logic is structured in a clear and fluent manner. The validation reads naturally like a sentence. Reads like plain English, unlike traditional `if-else` or annotation-based (`@NotNull`, `@Size`, etc.) validation.  
 
 ❌ Without Fluent Validator
 ```java
@@ -61,71 +61,71 @@ ruleFor(NetflixShowDto::getReleaseYear)
 
 ```
 
-### Maintainability
-Centralizes validation logic, making updates easy. If you need to change a rule, you update it in one place instead of modifying multiple files.
+3. Maintainability
+Centralizes validation logic, making updates easy. If you need to change a rule, you update it in one place instead of modifying multiple files.  
 
-### Reusable Rules
-Common validation logic can be reused across multiple request DTOs.
+4. Reusable Rules
+Common validation logic can be reused across multiple request DTOs.  
 
-### Extensible
-Can add custom rules without modifying the existing validation structure.
+5. Extensible
+Can add custom rules without modifying the existing validation structure.  
 
-### Improved Error Handling
-Custom validation messages and logic can be tailored to specific business needs.
+6. Improved Error Handling
+Custom validation messages and logic can be tailored to specific business needs.  
 
 ---
 
 
-## ✨Tech Stack
+## 🤖 Tech Stack
 The technology used in this project are:
-- `Spring Boot 3.4.2` : Framework for building RESTful APIs
-- `Spring Data JPA with Hibernate` : Simplifying database interactions
-- `Spring Boot Starter Web` : Building RESTful APIs or web applications
-- `PostgreSQL` : Database for persisting Netflix Shows
-- `Lombok` : Reducing boilerplate code
-- `Java Fluent Validator` : For advanced request validation
+- `Spring Boot Starter Web` – Building RESTful APIs or web applications
+- `Java Fluent Validator` – For advanced request validation
+- `PostgreSQL` – Database for persisting Netflix Shows
+- `Hibernate` – Simplifying database interactions
+- `Lombok` – Reducing boilerplate code
 ---
 
-## 📋 Project Structure
+## 🏗️ Project Structure
 The project follows a layered architecture with the following structure:
 ```bash
 api-with-fluent-validator/
 │── src/main/java/com/yoanesber/spring/rest/api_with_fluent_validator/
-│   ├── config/                # Contains configurations for the application
-│   ├── controller/            # Exposes REST API endpoints for handling requests and responses
-│   ├── dto/                   # Data Transfer Objects (DTOs) for request/response payloads
-│   ├── entity/                # Entity classes representing database tables
-│   ├── repository/            # JPA repositories for database access
-│   ├── service/               # Business logic layer
-│   │   ├── impl/              # Implementation of services
-│   ├── validator/             # Contains custom validation logic using Fluent Validator to enforce constraints on API request payloads
+│   ├── 📂config/                # Contains configurations for the application
+│   ├── 📂controller/            # Exposes REST API endpoints for handling requests and responses
+│   ├── 📂dto/                   # Data Transfer Objects (DTOs) for request/response payloads
+│   ├── 📂entity/                # Entity classes representing database tables
+│   ├── 📂repository/            # JPA repositories for database access
+│   ├── 📂service/               # Business logic layer
+│   │   ├── 📂impl/              # Implementation of services
+│   ├── 📂validator/             # Contains custom validation logic using Fluent Validator to enforce constraints on API request payloads
 ``` 
 ---
 
-## 📂 Environment Configuration
-Configuration values are stored in `.env.development` and referenced in `application.properties`.
-
-Example `.env.development` file content:
+## ⚙ Environment Configuration
+Configuration values are stored in `.env.development` and referenced in `application.properties`.  
+Example `.env.development` file content:  
 ```properties
-# application
+# Application properties
 APP_PORT=8081
 SPRING_PROFILES_ACTIVE=development
  
-# postgres
+# Database properties
 SPRING_DATASOURCE_PORT=5432
-SPRING_DATASOURCE_USERNAME=myusername
-SPRING_DATASOURCE_PASSWORD=mypassword
-SPRING_DATASOURCE_DB=netflix_development
+SPRING_DATASOURCE_USERNAME=your_username
+SPRING_DATASOURCE_PASSWORD=your_password 
+SPRING_DATASOURCE_DB=your_db
+SPRING_DATASOURCE_SCHEMA=your_schema
 ```
 
-Example `application.properties` file content:
+Example `application.properties` file content:  
 ```properties
+# Application properties
 spring.application.name=api-with-fluent-validator
 server.port=${APP_PORT}
 spring.profiles.active=${SPRING_PROFILES_ACTIVE}
 
 ## datasource
-spring.datasource.url=jdbc:postgresql://localhost:${SPRING_DATASOURCE_PORT}/${SPRING_DATASOURCE_DB}?currentSchema=netflix
+spring.datasource.url=jdbc:postgresql://localhost:${SPRING_DATASOURCE_PORT}/${SPRING_DATASOURCE_DB}?currentSchema=${SPRING_DATASOURCE_SCHEMA}
 spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
 spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
 ```
@@ -135,17 +135,17 @@ spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
 The project uses PostgreSQL as its database, with a structured schema to store Netflix show data efficiently. Below is the DDL (Data Definition Language) used to create the database schema.
 
 ```sql
-CREATE SCHEMA netflix;
+CREATE SCHEMA your_schema;
 
-CREATE SEQUENCE netflix.id_netflix_shows_seq
+CREATE SEQUENCE your_schema.id_netflix_shows_seq
 START WITH 1
 INCREMENT BY 1
 NO MINVALUE
 NO MAXVALUE
 CACHE 1;
 
-CREATE TABLE netflix.netflix_shows (
-	id int8 NOT NULL DEFAULT nextval('netflix.id_netflix_shows_seq'::regclass),
+CREATE TABLE IF NOT EXISTS your_schema.netflix_shows (
+	id int8 NOT NULL DEFAULT nextval('your_schema.id_netflix_shows_seq'::regclass),
 	"type" varchar(7) NOT NULL,
 	title text NOT NULL,
 	director text NULL,
@@ -163,29 +163,46 @@ CREATE TABLE netflix.netflix_shows (
 ```
 ---
 
-## 🛠 Installation & Setup
+## 🛠️ Installation & Setup
 A step by step series of examples that tell you how to get a development env running.
 1. Clone the repository
 ```bash
 git clone https://github.com/yoanesber/Spring-Boot-Validation-Using-Java-Fluent-Validator.git
+cd Spring-Boot-Validation-Using-Java-Fluent-Validator
 ```
 
 2. Set up PostgreSQL
-- Run DDL PostgreSQL to create Database Schema
-- Configure the PostgreSQL database connection in application.properties
+- Run the provided DDL script to set up the database schema
+- Configure the connection in `.env.development` file:
+```properties
+# Database properties
+SPRING_DATASOURCE_PORT=5432
+SPRING_DATASOURCE_USERNAME=your_username
+SPRING_DATASOURCE_PASSWORD=your_password
+SPRING_DATASOURCE_DB=your_db
+SPRING_DATASOURCE_SCHEMA=your_schema
+```
 
 3. Run the application locally
-- Make sure PostgreSQL is running, then execute: 
+Make sure PostgreSQL is running, then execute:  
 ```bash
 mvn spring-boot:run
 ```
-- The API will be available at http://localhost:8081/ 
+
+4. Now, application is available at:  
+```bash
+http://localhost:8081/ 
+```
+
+You can test the API using: Postman (Desktop/Web version) or cURL
+
 ---
 
-## 🔗 API Endpoints
-The REST API provides a set of endpoints to manage Netflix shows, allowing clients to perform CRUD operations (Create, Read, Update, Delete). Each endpoint follows RESTful principles and accepts/returns JSON data. Below is a list of available endpoints along with sample requests.
+## 🌐 API Endpoints
+The REST API provides a set of endpoints to manage Netflix shows, allowing clients to perform CRUD operations (Create, Read, Update, Delete). Each endpoint follows RESTful principles and accepts/returns JSON data. Below is a list of available endpoints along with sample requests.  
 
-- `GET` http://localhost:8081/api/v1/netflix-shows - Retrieve all Netflix Shows with response:
+- `GET` http://localhost:8081/api/v1/netflix-shows - Retrieve all Netflix Shows.
+**Successful Response:**
 ```json
 {
     "statusCode": 200,
@@ -223,7 +240,8 @@ The REST API provides a set of endpoints to manage Netflix shows, allowing clien
     ]
 }
 ```
-- `GET` http://localhost:8081/api/v1/netflix-shows/1 - Retrieve a specific Netflix Show by ID with response:
+- `GET` http://localhost:8081/api/v1/netflix-shows/1 - Retrieve a specific Netflix Show by ID.
+**Successful Response:**
 ```json
 {
     "statusCode": 200,
@@ -245,7 +263,8 @@ The REST API provides a set of endpoints to manage Netflix shows, allowing clien
     }
 }
 ```
-- `POST` http://localhost:8081/api/v1/netflix-shows - Create a new Netflix Show with body request:
+- `POST` http://localhost:8081/api/v1/netflix-shows - Create a new Netflix Show.
+**Request Body:**
 ```json
 {
     "showType":"TV_SHOW",
@@ -262,7 +281,7 @@ The REST API provides a set of endpoints to manage Netflix shows, allowing clien
 }
 ```
 
-Response:
+**Successful Response:**
 ```json
 {
     "statusCode": 201,
@@ -285,8 +304,8 @@ Response:
 }
 ```
 
-When sending an **invalid JSON body**, the API will return a `400 Bad Request` response with validation error details.
-Request:
+When sending an **invalid JSON body**, the API will return a `400 Bad Request` response with validation error details.  
+**Request Body:**
 ```json
 {
     "showType":"TV Show",
@@ -326,9 +345,11 @@ For the request body above, the response obtained is as follows:
     }
 }
 ```
-This response clearly indicates which fields failed validation and provides meaningful error messages for better debugging and user experience
 
-- `PUT` http://localhost:8081/api/v1/netflix-shows/1 - Update an existing Netflix Show with body request:
+**Note**: This response clearly indicates which fields failed validation and provides meaningful error messages for better debugging and user experience.  
+
+- `PUT` http://localhost:8081/api/v1/netflix-shows/1 - Update an existing Netflix Show.
+**Request Body:**
 ```json
 {
     "showType": "MOVIE",
@@ -345,7 +366,7 @@ This response clearly indicates which fields failed validation and provides mean
 }
 ```
 
-and response:
+**Successful Response:**
 ```json
 {
     "statusCode": 200,
@@ -368,7 +389,8 @@ and response:
 }
 ```
 
-- `DELETE` http://localhost:8081/api/v1/netflix-shows/1 - Delete a Netflix Show with response:
+- `DELETE` http://localhost:8081/api/v1/netflix-shows/1 - Delete a Netflix Show.
+**Successful Response:**
 ```json
 {
     "statusCode": 200,
@@ -378,5 +400,3 @@ and response:
 }
 ```
 ---
-
-This project follows best practices in Spring Boot development, ensuring efficiency and maintainability.
