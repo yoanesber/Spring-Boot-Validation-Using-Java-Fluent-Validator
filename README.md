@@ -7,7 +7,7 @@ This project is a Spring Boot REST API designed to manage **Netflix Shows**. It 
 One of the key aspects of this project is the use of **Java Fluent Validator** to enforce input validation rules **dynamically**. Instead of relying on standard **Java Bean Validation** (annotations like `@NotNull`), this approach allows greater **flexibility, readability, and maintainability** in defining complex validation rules programmatically. By using Fluent Validator, we can ensure that incoming request bodies adhere to the **expected structure and business rules** before persisting data into the database.  
 
 ## 🔍 Why Fluent Validator ?
-1. Programmatic & Flexible
+1. Programmatic & Flexible  
 Unlike annotations (`@NotNull`, `@Size`, etc.), validation rules can be dynamically modified at runtime. It means that validation rules are not fixed at compile-time but **can be adjusted based on conditions** at runtime. This allows the application to apply different validation rules dynamically depending on user input, API parameters, business logic, or external configurations.  
 
     Example scenario:  
@@ -37,7 +37,7 @@ public class NetflixShowValidator extends AbstractValidator<NetflixShowDto> {
 }
 ```
 
-2. Better Readability
+2. Better Readability  
 Validation logic is structured in a clear and fluent manner. The validation reads naturally like a sentence. Reads like plain English, unlike traditional `if-else` or annotation-based (`@NotNull`, `@Size`, etc.) validation.  
 
 ❌ Without Fluent Validator
@@ -61,16 +61,16 @@ ruleFor(NetflixShowDto::getReleaseYear)
 
 ```
 
-3. Maintainability
+3. Maintainability  
 Centralizes validation logic, making updates easy. If you need to change a rule, you update it in one place instead of modifying multiple files.  
 
-4. Reusable Rules
+4. Reusable Rules  
 Common validation logic can be reused across multiple request DTOs.  
 
-5. Extensible
+5. Extensible  
 Can add custom rules without modifying the existing validation structure.  
 
-6. Improved Error Handling
+6. Improved Error Handling  
 Custom validation messages and logic can be tailored to specific business needs.  
 
 ---
@@ -201,46 +201,10 @@ You can test the API using: Postman (Desktop/Web version) or cURL
 ## 🌐 API Endpoints
 The REST API provides a set of endpoints to manage Netflix shows, allowing clients to perform CRUD operations (Create, Read, Update, Delete). Each endpoint follows RESTful principles and accepts/returns JSON data. Below is a list of available endpoints along with sample requests.  
 
-- `GET` http://localhost:8081/api/v1/netflix-shows - Retrieve all Netflix Shows.
-**Successful Response:**
-```json
-{
-    "statusCode": 200,
-    "timestamp": "2025-02-27T21:31:04.7743558",
-    "message": "NetflixShows retrieved successfully",
-    "data": [
-        {
-            "id": 1,
-            "showType": "MOVIE",
-            "title": "Sankofa",
-            "director": "Haile Gerima",
-            "castMembers": "Kofi Ghanaba, Oyafunmike Ogunlano, Alexandra Duah, Nick Medley, Mutabaruka, Afemo Omilami, Reggie Carter, Mzuri, Oliver",
-            "country": "United States",
-            "dateAdded": "2021-09-24",
-            "releaseYear": 2024,
-            "rating": 10,
-            "durationInMinute": 90,
-            "listedIn": "Comedies",
-            "description": "A woman adjusting to life after a loss contends with a feisty bird that's taken over her garden — and a husband who's struggling to find a way forward."
-        },
-        {
-            "id": 2,
-            "showType": "TV_SHOW",
-            "title": "The Smart Money Woman",
-            "director": "Bunmi Ajakaiye",
-            "castMembers": "Osas Ighodaro, Ini Dima-Okojie, Kemi Lala Akindoju, Toni Tones, Ebenezer Eno, Eso Okolocha DIke, Patrick Diabuah, Karibi Fubara, Temisan Emmanuel, Timini Egbuson",
-            "country": "India",
-            "dateAdded": "2021-09-16",
-            "releaseYear": 2020,
-            "rating": 5,
-            "durationInMinute": 90,
-            "listedIn": "International TV Shows, Romantic TV Shows, TV Comedies",
-            "description": "Five glamorous millennials strive for success as they juggle careers, finances, love and friendships. Based on Arese Ugwu's 2016 best-selling novel."
-        }
-    ]
-}
-```
-- `GET` http://localhost:8081/api/v1/netflix-shows/1 - Retrieve a specific Netflix Show by ID.
+- `GET` http://localhost:8081/api/v1/netflix-shows - Retrieve all Netflix Shows.  
+
+- `GET` http://localhost:8081/api/v1/netflix-shows/1 - Retrieve a specific Netflix Show by ID.  
+
 **Successful Response:**
 ```json
 {
@@ -263,7 +227,9 @@ The REST API provides a set of endpoints to manage Netflix shows, allowing clien
     }
 }
 ```
-- `POST` http://localhost:8081/api/v1/netflix-shows - Create a new Netflix Show.
+
+- `POST` http://localhost:8081/api/v1/netflix-shows - Create a new Netflix Show.  
+
 **Request Body:**
 ```json
 {
@@ -288,7 +254,7 @@ The REST API provides a set of endpoints to manage Netflix shows, allowing clien
     "timestamp": "2025-02-27T21:32:43.3093492",
     "message": "NetflixShows created successfully",
     "data": {
-        "id": 2,
+        "id": 1,
         "showType": "TV_SHOW",
         "title": "The Smart Money Woman",
         "director": "Bunmi Ajakaiye",
@@ -305,6 +271,7 @@ The REST API provides a set of endpoints to manage Netflix shows, allowing clien
 ```
 
 When sending an **invalid JSON body**, the API will return a `400 Bad Request` response with validation error details.  
+
 **Request Body:**
 ```json
 {
@@ -322,7 +289,7 @@ When sending an **invalid JSON body**, the API will return a `400 Bad Request` r
 }
 ```
 
-For the request body above, the response obtained is as follows:
+For the request body above, the response obtained is as follows:  
 ```json
 {
     "statusCode": 400,
@@ -348,7 +315,8 @@ For the request body above, the response obtained is as follows:
 
 **Note**: This response clearly indicates which fields failed validation and provides meaningful error messages for better debugging and user experience.  
 
-- `PUT` http://localhost:8081/api/v1/netflix-shows/1 - Update an existing Netflix Show.
+- `PUT` http://localhost:8081/api/v1/netflix-shows/1 - Update an existing Netflix Show.  
+
 **Request Body:**
 ```json
 {
@@ -373,7 +341,7 @@ For the request body above, the response obtained is as follows:
     "timestamp": "2025-02-27T21:34:43.8536126",
     "message": "NetflixShows updated successfully",
     "data": {
-        "id": 2,
+        "id": 1,
         "showType": "MOVIE",
         "title": "Sankofa",
         "director": "Haile Gerima",
@@ -389,7 +357,8 @@ For the request body above, the response obtained is as follows:
 }
 ```
 
-- `DELETE` http://localhost:8081/api/v1/netflix-shows/1 - Delete a Netflix Show.
+- `DELETE` http://localhost:8081/api/v1/netflix-shows/1 - Delete a Netflix Show.  
+
 **Successful Response:**
 ```json
 {
